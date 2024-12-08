@@ -1,0 +1,38 @@
+services:
+  app:
+    container_name: football_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - football-game-network
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./resources:/var/www/html/resources
+    command: |
+      sh -c "php artisan key:generate && php artisan migrate:fresh --seed && nginx && php-fpm"
+
+  db:
+    image: mysql:lts
+    container_name: football-mysql
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: yes
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+    restart: on-failure
+    networks:
+      - football-game-network
+
+networks:
+  football-game-network:
+    driver: bridge

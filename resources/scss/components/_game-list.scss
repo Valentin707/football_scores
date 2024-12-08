@@ -1,0 +1,84 @@
+.series-wrapper {
+    .game-series {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+
+        h2 {
+            margin: 0;
+            padding: 10px;
+            color: #ffffff;
+        }
+    }
+
+    .games-list {
+        display: flex;
+        flex-direction: column;
+
+        .game-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 10px;
+
+            .game-time {
+                width: 10%;
+
+                span {
+                    color: #000000;
+                    font-size: 1.25rem;
+                    line-height: 1.5rem;
+                    font-weight: 600;
+                    font-style: italic;
+
+                    @media (max-width: 600px) {
+                        font-size: 1rem;
+                        line-height: 1.25rem;
+                    }
+                }
+            }
+
+            .game-teams {
+                width: 90%;
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
+                gap: 0.625rem;
+                justify-content: center;
+                align-items: center;
+
+                span {
+                    color: #000000;
+                    font-size: 1rem;
+                    line-height: 1.25rem;
+                }
+
+                .team {
+                    font-weight: 500;
+
+                    &:first-of-type {
+                        text-align: end;
+                    }
+
+                    &.winner {
+                        color: #28a348;
+                        font-weight: 700;
+                    }
+                }
+
+                .result {
+                    font-weight: 600;
+                    font-style: italic;
+                    color: #f0f0f0;
+                    padding: 0.125rem 0.625rem;
+                    background: rgba(0, 0, 0, 0.1);
+                    border-radius: 0.625rem;
+                    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                    backdrop-filter: blur(5px);
+                    -webkit-backdrop-filter: blur(5px);
+                    border: 1px solid rgba(0, 0, 0, 0.3);
+                }
+            }
+        }
+    }
+}

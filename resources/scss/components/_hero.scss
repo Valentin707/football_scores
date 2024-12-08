@@ -1,0 +1,29 @@
+.hero-section {
+    background-image: url("/public/images/hero.jpg");
+    background-repeat: no-repeat;
+    padding: 3rem 0;
+    text-align: center;
+    background-size: cover;
+    min-height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    clip-path: polygon(0% 0%, 100% 0, 100% 100%, 50% 80%, 0 100%);
+
+    .hero-title {
+        font-size: 4rem;
+        font-style: italic;
+        color: #ffffff;
+        margin: 0;
+        text-shadow: 0 0 15px #756868, 0 0 10px #363636;
+
+        @media (max-width: 1024px) {
+            font-size: 3rem;
+        }
+
+        @media (max-width: 600px) {
+            font-size: 2rem;
+        }
+    }
+}
